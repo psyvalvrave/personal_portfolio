@@ -12,8 +12,11 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Portfolio",
+  title: "Zhecheng Li",
   description: "Zhecheng Li's Personal Portfolio Website",
+  icons: {
+    icon: [{ url: '/personal_portfolio_icon.svg', type: 'image/svg+xml', sizes: 'any' },]
+  }
 };
 
 export default function RootLayout({ children }) {

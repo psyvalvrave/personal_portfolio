@@ -18,7 +18,7 @@ import {
   IconFileText,
   IconSchool,
   IconBriefcase,
-  IconMail,
+  IconContract ,
   IconChevronsDown 
 } from '@tabler/icons-react';
 export default function Home() { 
@@ -39,7 +39,7 @@ export default function Home() {
     { title: 'Experience', icon: <IconBriefcase />, href: '#experience'},
     { title: 'Project', icon: <IconFileText />, href: '#projects' },
     { title: 'Education', icon: <IconSchool />, href: '#education' },
-    { title: 'Contact', icon: <IconMail />, onClick: () => setContactOpen(true)},
+    { title: 'Contact', icon: <IconContract />, onClick: () => setContactOpen(true)},
     { title: 'Bottom', icon: <IconChevronsDown />, href: '#footer' },
   ];
   
