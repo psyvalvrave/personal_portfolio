@@ -1,0 +1,78 @@
+.container {
+  position: fixed;
+  display: table;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  transform: scale(0);
+  z-index: 50;
+}
+
+.content {
+  opacity: 0;
+  transform: translateY(-20px);
+}
+
+.container.sketch .content {
+  animation: contentDropIn 0.6s 1.4s ease forwards;
+}
+
+.container.sketch {
+  transform: scale(1);
+}
+
+.container.sketch .background {
+  animation: fadeIn 1s cubic-bezier(0.165,0.84,0.44,1) forwards;
+}
+
+.container .background {
+  display: table-cell;
+  vertical-align: middle;
+  text-align: center;
+}
+.container .modal {
+  background: transparent;
+  padding: 1px;
+  display: inline-block;
+  border-radius: 3px;
+  position: relative;
+  width: fit-content;  
+}
+
+.container.sketch .modal {
+  background-color: transparent;
+  animation: modalFadeIn 1s 1.3s cubic-bezier(0.165,0.84,0.44,1) forwards;
+}
+
+.container .svg {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  border-radius: 3px;
+  pointer-events: none;
+}
+.container .svg rect {
+  fill: none;
+  stroke: #fff;
+  stroke-width: 2px;
+  stroke-dasharray: var(--dash);
+  stroke-dashoffset: var(--dash);
+}
+.container.sketch .svg rect {
+  animation: sketchIn 0.8s 0.3s cubic-bezier(0.165,0.84,0.44,1) forwards;
+}
+
+@keyframes fadeIn       { from {background:rgba(0,0,0,0);} to {background:rgba(0,0,0,0.7);} }
+@keyframes modalFadeIn  { from {background-color:transparent;} to {background-color:white;} }
+@keyframes sketchIn {
+  from { stroke-dashoffset: var(--dash); }
+  to   { stroke-dashoffset: 0;          }
+}
+
+@keyframes contentDropIn {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
