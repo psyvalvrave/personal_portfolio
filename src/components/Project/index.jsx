@@ -15,7 +15,7 @@ const projects = [
     {
         title: "Personal Portfolio",
         imageSrc: "/images/projects/Personal_Portfolio.png",
-        githubUrl: "https://github.com/psyvalvrave/Elvui_Freebie",
+        githubUrl: "https://github.com/psyvalvrave/personal_portfolio",
         keywords: ["JavaScript", "React", "Tailwind CSS", "HTML"],
         description: "A personal portfolio website built with React and Tailwind CSS, showcasing my projects and skills.",
     },
