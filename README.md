@@ -21,11 +21,9 @@ NEXT_PUBLIC_RECAPTCHA_SITE_KEY=your_site_key_here
 RECAPTCHA_SECRET_KEY=your_secret_key_here
 
 # Email service (Nodemailer / SendGrid / SMTP)
-EMAIL_HOST=smtp.sendgrid.net
-EMAIL_PORT=587
-EMAIL_USER=apikey
-EMAIL_PASS=your_sendgrid_api_key
-EMAIL_FROM=you@yourdomain.com
+SENDGRID_API_KEY=your_sendgrid_api_key_here
+SENDER_EMAIL=your_email@example.com      # Address messages are sent from
+TO_EMAIL=recipient_email@example.com    # Address messages are sent to
 ```
 
 ### reCAPTCHA
