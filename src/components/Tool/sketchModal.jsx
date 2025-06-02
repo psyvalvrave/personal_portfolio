@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useLayoutEffect, useRef } from 'react';
-import styles from '../Styles/sketchModal.module.css';
+import styles from '../ToolStyles/sketchModal.module.css';
 
 export default function SketchModal({ children }) {
         const DASH = 2000;  

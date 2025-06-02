@@ -1,7 +1,10 @@
 import React, { useState, useLayoutEffect, useRef } from 'react';
+import { useSelector } from 'react-redux';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import EducationDisplay from '../Tool/educationDisplay';
+import CustomDropdown from '../Tool/customDropdown';
+import './education.css';
 
 const educations = [
     {
@@ -41,6 +44,8 @@ const educations = [
             const [showCoursesBySchool, setShowCoursesBySchool] = useState({})
             const pinnedContainerRef = useRef(null);
 
+            const isMobile = useSelector((state) => state.responsive.isMobile);
+
             const open = !!showCoursesBySchool[selectedEducation]
             const toggleCourses = () => {
             setShowCoursesBySchool(prev => ({
@@ -51,6 +56,10 @@ const educations = [
 
             useLayoutEffect(() => {
             gsap.registerPlugin(ScrollTrigger);
+
+            if (isMobile) {
+                return;
+            }
         
             const triggerEl = pinnedContainerRef.current;
             const containerEl = triggerEl.parentElement;
@@ -70,21 +79,21 @@ const educations = [
         
 
             return () => st.kill();
-            }, []);
+            }, [isMobile]);
         
             return (
             <section id="education">
-                <div className="relative text-white h-[150vh] p-[5%] [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]">
-                <div className="flex flex-row justify-between gap-4">
-                    <div className="w-6/16">
-                    <div className="flex flex-col relative mt-[50vh]">
+                <div className="education-content">
+                <div className="education-row">
+                    <div className="education-left">
+                    <div className="education-list">
                         {educations.map((edu, idx) => (
                         <div
                             key={idx}
                             onMouseEnter={() => setSelectedEducation(idx)}
-                            className="w-full text-white uppercase text-[2vw] border-b border-white flex justify-start cursor-default"
+                            className="education-item"
                         >
-                            <h2 className="m-0 mt-[40px] mb-[20px] font-bold breath">
+                            <h2>
                             {edu.school}
                             </h2>
                         </div>
@@ -92,20 +101,20 @@ const educations = [
                     </div>
                     </div>
         
-                    <div className="w-9/16 flex flex-col items-end space-y-4" ref={pinnedContainerRef}>
-                    <h1 className="mb-4 text-3xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 to-violet-400">
+                    <div className="education-right" ref={pinnedContainerRef}>
+                    <h1 className="education-title">
+                        <span className="gradient-text">
                         Education
                         </span>
                     </h1>
+                    <CustomDropdown
+                        className="block md:hidden"
+                        options={educations.map(e => e.school)}
+                        selected={selectedEducation}
+                        onChange={setSelectedEducation}
+                        />
                     <div
-                        className={`
-                            w-[70%]
-                            h-2         
-                            bg-gradient-to-r from-indigo-700 via-purple-500 to-violet-400
-                            bg-[length:200%_100%]        
-                            animate-[gradient-slide_3s_linear_infinite_alternate]
-                        `}
+                        className="gradient-bar"
                         />
                     <EducationDisplay
                         imageSrc={educations[selectedEducation].imageSrc}

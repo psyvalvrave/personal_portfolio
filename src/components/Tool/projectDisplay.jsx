@@ -9,10 +9,12 @@ const ProjectDisplay = ({ title, imageSrc, githubUrl, keywords, description, dow
 
     return (
         <div className="flex flex-col w-full max-w-full h-[60vh] gap-4 bg-[radial-gradient(circle_200px_at_50%_500px,#e8b3f536,#15012b)] p-6 rounded-lg shadow-lg">       
-            <div className="relative w-full h-full rounded-lg overflow-hidden cursor-pointer transform transition duration-200 ease-out hover:scale-105" 
+            <div className="relative w-full h-full rounded-lg overflow-hidden cursor-pointer transform transition duration-200 ease-out hover:scale-100 md:hover:scale-105" 
             onClick={() => setModalOpen(true)}
-            >
-                <Glow />           
+            >   
+                <div className="hidden md:block">
+                    <Glow />  
+                </div>         
                 <Image 
                     src={imageSrc} 
                     alt={title} 
@@ -22,7 +24,7 @@ const ProjectDisplay = ({ title, imageSrc, githubUrl, keywords, description, dow
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 66vw, 50vw"
                 />                         
             </div>
-            <div className="flex items-center justify-between">
+            <div className="flex flex-col gap-2 items-start md:flex-row md:items-center md:justify-between">
                 <h2 className="text-2xl font-bold">{title}</h2>
                 <div className="flex gap-4">
                     {githubUrl && (

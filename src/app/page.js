@@ -1,6 +1,9 @@
 'use client';
 
 import { useEffect, useState } from "react";  
+import { Provider, useDispatch } from "react-redux";
+import { store } from "@/store";
+import { setIsMobile } from "@/store/responsiveSlice";
 import { VerticalDock } from "@/components/Tool/verticalDock";
 import Intro from "../components/Intro";
 import Description from '../components/Description';
@@ -18,9 +21,27 @@ import {
   IconFileText,
   IconSchool,
   IconBriefcase,
-  IconContract ,
-  IconChevronsDown 
+  IconContract 
 } from '@tabler/icons-react';
+
+function ResponsiveListener({ children }) {
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (typeof window === 'undefined') {
+      return;
+    }
+
+    const mql = window.matchMedia('(max-width: 767px)');
+    const onChange = (e) => dispatch(setIsMobile(e.matches));
+
+    dispatch(setIsMobile(mql.matches));
+    mql.addEventListener('change', onChange);
+    return () => mql.removeEventListener('change', onChange);
+  }, [dispatch]);
+
+  return <>{children}</>;
+}
 export default function Home() { 
   const [isContactOpen, setContactOpen] = useState(false);
 
@@ -40,7 +61,6 @@ export default function Home() {
     { title: 'Project', icon: <IconFileText />, href: '#projects' },
     { title: 'Education', icon: <IconSchool />, href: '#education' },
     { title: 'Contact', icon: <IconContract />, onClick: () => setContactOpen(true)},
-    { title: 'Bottom', icon: <IconChevronsDown />, href: '#footer' },
   ];
   
 
@@ -54,22 +74,26 @@ export default function Home() {
   }, []);
 
   return (
-    <>
-    <VerticalDock items={dockItems} />
-    <main className='flex flex-col'>
-      <Intro />
-      <Description  />
-      <Stack  />
-      <Experience  />
-      <Project  />
-      <Education  />
-      <Footer />
-    </main>
-    {isContactOpen && (
-        <SketchModal onClose={() => setContactOpen(false)}>
-          <ContactForm onClose={() => setContactOpen(false)} />
-        </SketchModal>
-      )}
-    </>
+    <Provider store={store}>
+      <ResponsiveListener>
+        <>
+        <VerticalDock items={dockItems} />
+        <main className='flex flex-col'>
+          <Intro />
+          <Description  />
+          <Stack  />
+          <Experience  />
+          <Project  />
+          <Education  />
+          <Footer />
+        </main>
+        {isContactOpen && (
+            <SketchModal onClose={() => setContactOpen(false)}>
+              <ContactForm onClose={() => setContactOpen(false)} />
+            </SketchModal>
+          )}
+        </>
+      </ResponsiveListener>
+    </Provider>
   );
 }

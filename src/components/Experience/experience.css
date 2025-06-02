@@ -1,0 +1,56 @@
+
+
+.experience-content {
+    background: radial-gradient(
+    125% 125% at 50% 10%,
+    #000 40%,
+    #63e 100%
+  );
+  position: relative;          
+  color: white;                
+  height: 100%;               
+  padding-top: 10rem;          
+  padding-left: 1rem;          
+  padding-right: 1rem;
+  display: flex;               
+  flex-direction: column;      
+}
+
+@media (min-width: 768px) {
+  .experience-content {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.experience-title {
+  margin: 0 auto 2rem;       
+  font-weight: 800;           
+  font-size: 1.875rem;     
+  color: #1f2937;            
+  text-align: center;
+}
+
+@media (min-width: 768px) {
+  .experience-title {
+    font-size: 3rem;         
+  }
+}
+
+@media (min-width: 1024px) {
+  .experience-title {
+    font-size: 3.75rem;      
+  }
+}
+
+.gradient-text {
+  background: linear-gradient(
+    to right,
+    #4338ca,    
+    #a78bfa     
+  );
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}

@@ -2,7 +2,7 @@ import React from 'react';
 import Image from 'next/image';
 import HoverReveal from './hoverReveal';
 
-const IconsOnRing = ({ icons, ringSize = 300, iconSize = 48 }) => {
+const IconsOnRing = ({ icons, ringSize, iconSize}) => {
     const center = ringSize / 2;
     const placementRadius = center;
 
@@ -37,7 +37,7 @@ const IconsOnRing = ({ icons, ringSize = 300, iconSize = 48 }) => {
                     </div>
                 }
                 hoverContent={
-                    <span className="text-white font-bold text-xl text-center">
+                    <span className="text-white font-bold max-md:text-base text-xl text-center">
                     {icon.alt}
                     </span>
                 }

@@ -1,12 +1,15 @@
 import React, { useLayoutEffect, useRef } from 'react'
+import { useSelector } from 'react-redux';
 import Image from 'next/image';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ScrollToPlugin from 'gsap/dist/ScrollToPlugin';
 import { TextGenerateEffect } from '../Tool/text-generate-effect';
-import styles from '../Styles/intro.module.css';
+import styles from './intro.module.css';
 
 export default function Index() {
+    const isMobile = useSelector(state => state.responsive.isMobile);
+
     const backgroundRef = useRef(null);
     const homeHeaderRef = useRef(null);
     const introImageRef = useRef(null);
@@ -34,7 +37,7 @@ export default function Index() {
                 ease: 'power2.inOut',
                 scrollTo: {
                     y: '#description',       
-                    offsetY: -200,           
+                    offsetY: isMobile ? 0 : -200,        
                 },
             });
         };
@@ -51,13 +54,13 @@ return (
                 <div className={styles.stars3} />
             </div>       
             <div className="flex justify-center relative mt-[35vh]">
-                <div ref={introImageRef} data-scroll data-scroll-speed="0.3" className="absolute w-[768px] aspect-[3/2] filter brightness-[0.7]">
+                <div ref={introImageRef} data-scroll data-scroll-speed="0.3" className="absolute w-full max-w-[768px] aspect-[3/2] filter brightness-[0.7]">
                     <Image                           
                         src={'/images/Intro.png'}
                         alt="intro image"
                         fill={true} 
                         priority={true}
-                        sizes="768px"
+                        sizes="(max-width: 768px) 100vw, 768px"
                         className="object-cover object-center"
                     />
                 </div>

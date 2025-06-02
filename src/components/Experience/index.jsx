@@ -1,6 +1,7 @@
 import React from 'react'
 import { Timeline } from '../Tool/timeline';
 import { Notebook } from '../Tool/notebook';
+import './experience.css'
 
 
 const experiences = [
@@ -27,17 +28,14 @@ const experiences = [
 
 export default function Index() {
     return (
-        <section id="experience">
-            <div className="relative text-white h-full pt-40 px-4 md:mx-auto flex flex-col [background:radial-gradient(125%_125%_at_50%_10%,#000_40%,#63e_100%)]">      
-
-            <h1 className="text-3xl mx-auto font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 to-violet-400">
+        <section id="experience" >
+            <div className="experience-content">      
+            <h1 className="experience-title">
+                <span className="gradient-text">
                 Experience
                 </span>
             </h1>          
-
-                <Timeline data={experiences} />
-
+            <Timeline data={experiences} />
             </div>
         </section>
     )

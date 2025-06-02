@@ -1,7 +1,10 @@
 import React, { useState, useLayoutEffect, useRef } from 'react'
+import { useSelector } from 'react-redux';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import ProjectDisplay from '../Tool/projectDisplay';
+import CustomDropdown from '../Tool/customDropdown';
+import './project.css'
 
 const projects = [
     {
@@ -48,8 +51,14 @@ export default function Index() {
     const [selectedProject, setSelectedProject] = useState(0);
     const pinnedContainerRef = useRef(null);
 
+    const isMobile = useSelector((state) => state.responsive.isMobile);
+
     useLayoutEffect( () => {
         gsap.registerPlugin(ScrollTrigger);
+
+        if (isMobile) {
+                return;
+            }
         
         const triggerEl = pinnedContainerRef.current;
         const containerEl = triggerEl.parentElement;
@@ -69,13 +78,18 @@ export default function Index() {
 
     return (
         <section id="projects">
-            <div className="relative text-white h-[150vh] p-[5%] [background:radial-gradient(125%_125%_at_50%_90%,#000_40%,#63e_100%)]">
-                <div className="flex flex-row justify-between gap-4">
-                    <div className="w-11/16" ref={pinnedContainerRef}>
-                    
-                    <h1 className="mb-4 text-3xl font-extrabold md:text-5xl lg:text-6xl">
-                        <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo-700 to-violet-400">Project</span>
+            <div className="projects-content">
+                <div className="projects-row">
+                    <div className="projects-left" ref={pinnedContainerRef}>                   
+                    <h1 className="projects-title">
+                        <span className="gradient-text">Project</span>
                     </h1>
+                    <CustomDropdown
+                        className="block md:hidden"
+                        options={projects.map(p => p.title)}
+                        selected={selectedProject}
+                        onChange={setSelectedProject}
+                        />
                     <ProjectDisplay 
                         title={projects[selectedProject].title}
                         imageSrc={projects[selectedProject].imageSrc}
@@ -86,15 +100,15 @@ export default function Index() {
                     />
                     
                     </div>
-                    <div className="w-4/16">
-                    <div className="flex flex-col relative mt-[50vh]">
+                    <div className="projects-right">
+                    <div className="projects-right-inner">
                         {projects.map((project, index) => (
                         <div 
                             key={index} 
                             onMouseEnter={() => setSelectedProject(index)}
-                            className="w-full text-white uppercase text-[2vw] border-b border-white flex justify-end"
+                            className="project-link"
                         >
-                            <h2 className="m-0 mt-[40px] mb-[20px] font-bold breath cursor-default">{project.title}</h2>
+                            <h2 className="breath">{project.title}</h2>
                         </div>
                         ))}
                         </div>

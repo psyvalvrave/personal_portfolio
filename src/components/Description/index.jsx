@@ -15,12 +15,13 @@ export default function Index() {
                         font-extrabold
                         leading-none
                         tracking-tight
-                        text-white        
-                        text-4xl
+                        text-white   
+                        text-2xl     
+                        md:text-4xl
                         lg:text-5xl
                         mt-[30vw]
                         ml-[5vw]">
-                            <h1 className="mb-4 text-3xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
+                            <h1 className="mb-4 text-xl sm:text-2xl md:sm:text-3xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-700 to-violet-400">ABOUT ME</span>
                             </h1>
                             {phrases.map((phrase, index) => (
@@ -76,20 +77,20 @@ function AnimatedIcons() {
         });
     }, []);
     return (
-        <div ref={iconsRef} className="flex space-x-16 mt-10">
+        <div ref={iconsRef} className="flex space-x-8 md:space-x-16 mt-5 md:mt-10">
             <a 
                 href="https://github.com/psyvalvrave" 
                 target="_blank" 
                 rel="noopener noreferrer"
             >
-            <FaGithub className="text-white text-6xl transition-transform duration-300 transform hover:scale-[1.5]" />
+            <FaGithub className="text-white text-3xl md:text-6xl transition-transform duration-300 transform hover:scale-[1.5]" />
         </a>
         <a 
             href="https://www.linkedin.com/in/zhecheng-li-0923b4190/" 
             target="_blank" 
             rel="noopener noreferrer"
         >
-            <FaLinkedin className="text-white text-6xl transition-transform duration-300 transform hover:scale-[1.5]" />
+            <FaLinkedin className="text-white text-3xl md:text-6xl transition-transform duration-300 transform hover:scale-[1.5]" />
         </a>
         </div>
     );
