@@ -82,6 +82,7 @@ function AnimatedIcons() {
                 href="https://github.com/psyvalvrave" 
                 target="_blank" 
                 rel="noopener noreferrer"
+                aria-label="View GitHub profile"
             >
             <FaGithub className="text-white text-3xl md:text-6xl transition-transform duration-300 transform hover:scale-[1.5]" />
         </a>
@@ -89,6 +90,7 @@ function AnimatedIcons() {
             href="https://www.linkedin.com/in/zhecheng-li-0923b4190/" 
             target="_blank" 
             rel="noopener noreferrer"
+            aria-label="View LinkedIn profile"
         >
             <FaLinkedin className="text-white text-3xl md:text-6xl transition-transform duration-300 transform hover:scale-[1.5]" />
         </a>

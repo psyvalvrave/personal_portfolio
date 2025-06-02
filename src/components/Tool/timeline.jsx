@@ -138,9 +138,9 @@ export const Timeline = ({ data }) => {
                   <span className="font-medium">{item.endDate}</span>
                 </p>
               </div>
-              <h3 className="text-xl font-bold text-neutral-200 mb-2">
+              <h2 className="text-xl font-bold text-neutral-200 mb-2">
                 {item.title}
-              </h3>
+              </h2>
               <p className="hidden md:block text-sm font-bold text-neutral-500 mb-4">
                 {item.location}
               </p>

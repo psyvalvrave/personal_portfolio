@@ -27,6 +27,7 @@ export function VerticalDock({ items }) {
 
     return (
         <nav
+        aria-label="Page sections navigation"
         onMouseMove={e => {
             mouseY.set(e.clientY); 
             mouseX.set(e.clientX)}}
@@ -92,6 +93,7 @@ export function VerticalDock({ items }) {
             onClick={onClick}
             onMouseEnter={() => setHovered(true)}
             onMouseLeave={() => setHovered(false)}
+            aria-label={title}
             style={{ width: size, height: size }}
             className={cn(
                 'relative flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md hover:bg-white/20 transition-colors cursor-pointer',

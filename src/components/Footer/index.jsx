@@ -56,6 +56,7 @@ export default function Footer() {
                                     href={href}
                                     target="_blank"
                                     rel="noopener noreferrer"
+                                    aria-label={label}
                                     className="
                                     inline-block text-white
                                     transform transition duration-200
