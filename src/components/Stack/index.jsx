@@ -131,7 +131,7 @@ export default function Index() {
             <section id="stack">
                 <div className="relative h-screen mt-10 pb-20 flex flex-col items-center justify-center bg-[radial-gradient(circle_400px_at_50%_500px,#e8b3f536,#15012b)]">
                     <h1 className="md:hidden absolute top-[20%] left-1/2 transform -translate-x-1/2 text-2xl font-bold text-white">
-                        <span>TECH STACK</span></h1>
+                        <span>Technology</span></h1>
                     <div className="fixed inset-0 z-[-1]" />
                     <div 
                         ref={centerRef}
@@ -150,7 +150,7 @@ export default function Index() {
                                 />
                             </div>
                             }
-                            defaultContent={<span className="text-white font-bold text-xl">TECH STACK</span>}
+                            defaultContent={<span className="text-white font-bold text-xl">Technology</span>}
                         containerClassName="relative w-24 h-24"
                         defaultContentClassName="absolute inset-0 flex items-center justify-center"
                         />
@@ -159,30 +159,30 @@ export default function Index() {
             
                     <div
                     ref={ringOneRef}
-                    className="absolute w-[120px] h-[120px] md:w-[300px] md:h-[300px] flex items-center justify-center border border-blue-400 rounded-full mt-16 pointer-events-none"
+                    className="absolute w-[120px] h-[120px] md:w-[240px] md:h-[240px] flex items-center justify-center border border-blue-400 rounded-full mt-16 pointer-events-none"
                     >
-                        <IconsOnRing icons={computedIconsFirstRing} ringSize={isMobile ? 120 : 300} iconSize={iconSize}/>
+                        <IconsOnRing icons={computedIconsFirstRing} ringSize={isMobile ? 120 : 240} iconSize={iconSize}/>
                     </div>
             
                     <div
                     ref={ringTwoRef}
-                    className="absolute w-[180px] h-[180px] md:w-[450px] md:h-[450px] flex items-center justify-center border border-blue-600 rounded-full mt-16 pointer-events-none"
+                    className="absolute w-[180px] h-[180px] md:w-[360px] md:h-[360px] flex items-center justify-center border border-blue-600 rounded-full mt-16 pointer-events-none"
                     >
-                        <IconsOnRing icons={computedIconsSecondRing} ringSize={isMobile ? 180 : 450} iconSize={iconSize}/>
+                        <IconsOnRing icons={computedIconsSecondRing} ringSize={isMobile ? 180 : 360} iconSize={iconSize}/>
                     </div>
             
                     <div
                     ref={ringThreeRef}
-                    className="absolute w-[240px] h-[240px] md:w-[600px] md:h-[600px] flex items-center justify-center border border-blue-800 rounded-full mt-16 pointer-events-none"
+                    className="absolute w-[240px] h-[240px] md:w-[480px] md:h-[480px] flex items-center justify-center border border-blue-800 rounded-full mt-16 pointer-events-none"
                     >
-                        <IconsOnRing icons={computedIconsThirdRing} ringSize={isMobile ? 240 : 600} iconSize={iconSize}/>
+                        <IconsOnRing icons={computedIconsThirdRing} ringSize={isMobile ? 240 : 480} iconSize={iconSize}/>
                     </div>
 
                     <div
                     ref={ringFourRef}
-                    className="absolute w-[300px] h-[300px] md:w-[750px] md:h-[750px] flex items-center justify-center border border-blue-900 rounded-full mt-16 pointer-events-none"
+                    className="absolute w-[300px] h-[300px] md:w-[600px] md:h-[600px] flex items-center justify-center border border-blue-900 rounded-full mt-16 pointer-events-none"
                     >
-                        <IconsOnRing icons={computedIconsFourthRing} ringSize={isMobile ? 300 : 750} iconSize={iconSize}/>
+                        <IconsOnRing icons={computedIconsFourthRing} ringSize={isMobile ? 300 : 600} iconSize={iconSize}/>
                     </div>
                 </div>
             </section>

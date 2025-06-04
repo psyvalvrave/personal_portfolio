@@ -10,12 +10,6 @@
     );
 }
 
-@media (max-width: 767px) {
-    .education-content {
-        height: 100vh;
-    }
-}
-
 .education-row {
     display: grid;
     grid-template-columns: 1fr; 
@@ -44,7 +38,7 @@
     border-bottom: 1px solid white;
     display: flex;
     justify-content: flex-start;
-    cursor: default;
+    cursor: pointer;
 }
 
 .education-item h2 {
@@ -103,6 +97,7 @@
     );
     background-size: 200% 100%;
     animation: gradient-slide 3s linear infinite alternate;
+    flex-shrink: 0;
 }
 
 @keyframes gradient-slide {

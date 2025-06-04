@@ -1,7 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
-    isMobile: false,
+    isMobile: null,
 };
 
 const responsiveSlice = createSlice({

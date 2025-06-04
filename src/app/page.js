@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import { useEffect, useState } from "react";  
 import { Provider, useDispatch } from "react-redux";
@@ -33,10 +33,11 @@ function ResponsiveListener({ children }) {
     }
 
     const mql = window.matchMedia('(max-width: 767px)');
-    const onChange = (e) => dispatch(setIsMobile(e.matches));
-
     dispatch(setIsMobile(mql.matches));
+    
+    const onChange = (e) => dispatch(setIsMobile(e.matches));
     mql.addEventListener('change', onChange);
+
     return () => mql.removeEventListener('change', onChange);
   }, [dispatch]);
 

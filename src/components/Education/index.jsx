@@ -93,7 +93,7 @@ const educations = [
                             onMouseEnter={() => setSelectedEducation(idx)}
                             className="education-item"
                         >
-                            <h2>
+                            <h2 className="breath">
                             {edu.school}
                             </h2>
                         </div>
