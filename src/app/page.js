@@ -1,7 +1,7 @@
 "use client";
 
-import { useEffect, useState } from "react";  
-import { Provider, useDispatch } from "react-redux";
+import { useEffect, useState, useMemo } from "react";  
+import { Provider, useDispatch, useSelector } from "react-redux";
 import { store } from "@/store";
 import { setIsMobile } from "@/store/responsiveSlice";
 import { VerticalDock } from "@/components/Tool/verticalDock";
@@ -41,60 +41,67 @@ function ResponsiveListener({ children }) {
     return () => mql.removeEventListener('change', onChange);
   }, [dispatch]);
 
-  return <>{children}</>;
+  return null;
 }
-export default function Home() { 
+function HomeContent() {
+  const isMobile = useSelector((state) => state.responsive.isMobile);
   const [isContactOpen, setContactOpen] = useState(false);
+
+  const dockItems = useMemo(
+    () => [
+      { title: "Top", icon: <IconChevronsUp />, href: "#intro", offsetY: 0 },
+      { title: "Description", icon: <IconInfoCircle />, href: "#description", offsetY: isMobile ? -20 : -190 },
+      { title: "Skill Set", icon: <IconCode />, href: "#stack", offsetY: isMobile ? 80 : 150 },
+      { title: "Experience", icon: <IconBriefcase />, href: "#experience", offsetY: isMobile ? 0 : -100 },
+      { title: "Project", icon: <IconFileText />, href: "#projects", offsetY: isMobile ? 70 : 0 },
+      { title: "Education", icon: <IconSchool />, href: "#education", offsetY: isMobile ? 70 : -100 },
+      { title: "Contact", icon: <IconContract />, onClick: () => setContactOpen(true) },
+    ],
+    [isMobile]
+  );
 
   useEffect(() => {
     if ("scrollRestoration" in window.history) {
       window.history.scrollRestoration = "manual";
     }
-
     window.scrollTo(0, 0);
   }, []);
 
-  const dockItems = [
-    { title: 'Top', icon: <IconChevronsUp />, href: '#intro' },
-    { title: 'Description', icon: <IconInfoCircle />, href: '#description', offsetY: -200},
-    { title: 'Skill Set', icon: <IconCode />, href: '#stack', offsetY: 150 },
-    { title: 'Experience', icon: <IconBriefcase />, href: '#experience'},
-    { title: 'Project', icon: <IconFileText />, href: '#projects' },
-    { title: 'Education', icon: <IconSchool />, href: '#education' },
-    { title: 'Contact', icon: <IconContract />, onClick: () => setContactOpen(true)},
-  ];
-  
-
   useEffect(() => {
-    (
-      async () => {
-        const LocomotiveScroll = (await import("locomotive-scroll")).default;
-        const locomotiveScroll = new LocomotiveScroll();
-    }
-    )();
+    (async () => {
+      const LocomotiveScroll = (await import("locomotive-scroll")).default;
+      new LocomotiveScroll(); 
+    })();
   }, []);
 
   return (
+    <>
+      <ResponsiveListener />
+      <VerticalDock items={dockItems} />
+
+      <main className="flex flex-col">
+        <Intro />
+        <Description />
+        <Stack />
+        <Experience />
+        <Project />
+        <Education />
+        <Footer />
+      </main>
+
+      {isContactOpen && (
+        <SketchModal onClose={() => setContactOpen(false)}>
+          <ContactForm onClose={() => setContactOpen(false)} />
+        </SketchModal>
+      )}
+    </>
+  );
+}
+
+export default function Home() {
+  return (
     <Provider store={store}>
-      <ResponsiveListener>
-        <>
-        <VerticalDock items={dockItems} />
-        <main className='flex flex-col'>
-          <Intro />
-          <Description  />
-          <Stack  />
-          <Experience  />
-          <Project  />
-          <Education  />
-          <Footer />
-        </main>
-        {isContactOpen && (
-            <SketchModal onClose={() => setContactOpen(false)}>
-              <ContactForm onClose={() => setContactOpen(false)} />
-            </SketchModal>
-          )}
-        </>
-      </ResponsiveListener>
+      <HomeContent />
     </Provider>
   );
 }
