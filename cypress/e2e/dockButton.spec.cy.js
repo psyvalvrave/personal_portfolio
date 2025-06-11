@@ -1,3 +1,4 @@
+//cypress/e2e/dockButton.spec.cy.js
 describe("VerticalDock E2E smoke tests", () => {
     beforeEach(() => {
         cy.visit("/");

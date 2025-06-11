@@ -1,3 +1,4 @@
+//cypress/e2e/project.spec.cy.js
 describe('Projects Section – Pin, Hover & Dropdown Selection', () => {
     context('Desktop: Project Selection', () => {
         beforeEach(() => {

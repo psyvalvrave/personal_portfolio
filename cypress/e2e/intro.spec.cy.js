@@ -1,3 +1,4 @@
+//cypress/e2e/intro.spec.cy.js
 describe("Intro Section Smoke Tests", () => {
     const waitForAnimation = () => {
         cy.wait(1600);

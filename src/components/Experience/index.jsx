@@ -1,41 +1,43 @@
+//src/components/Experience/index.jsx
 import React from 'react'
-import { Timeline } from '../Tool/timeline';
-import { Notebook } from '../Tool/notebook';
+import { useTranslations, useMessages } from "next-intl";
+import { Timeline } from '@/components/Tool/timeline';
+import { Notebook } from '@/components/Tool/notebook';
 import './experience.css'
 
 
-const experiences = [
-    {
-        startDate: "February 2021",
-        endDate:   "May 2021",
-        title:     "Full-Stack Development Intern",
-        location: "Xixi Food Company -- Hainan, China",
-        content:   <Notebook items={["1. Designed and implemented a front-end web page to streamline inventory management.", 
-                "2. Developed and integrated a MySQL database for efficient storage and retrieval of product inventory data."]} 
-                />
-        },
-    {
-        startDate: "October 2022",
-        endDate:   "February 2023",
-        title:     "Software Developer Intern",
-        location: "Dell Technologies -- Shanghai, China",
-        content:   <Notebook items={["1. Improved machine learning models by modifying training data and adjusting data types using PyTorch, TensorFlow, and Keras.", 
-                    "2. Tested and debugged an embedded system on a Raspberry Pi integrated with R/C cars, leveraging Linux command-line utilities to validate real-time performance.", 
-                    "3. Leveraging Python, Django, and REST APIs to develop a dynamic website that lets users remotely control a car from various locations has been an exhilarating and innovative experience."]} 
-                    />,
-            }
+const locations = [
+    "Xixi Food Company -- Hainan, China",
+    "Dell Technologies -- Shanghai, China"
 ];
 
 export default function Index() {
+    const t = useTranslations("experience");
+    const messages = useMessages();                  
+    const {entries} = messages.experience;      
+    const keys = Object.keys(entries);               
+
+    const data = keys.map((key, idx) => {
+        const entry = entries[key];
+        const contentKeys = Object.keys(entry.content);
+
+        return {
+        startDate: t(`entries.${key}.startDate`),
+        endDate:   t(`entries.${key}.endDate`),
+        title:     t(`entries.${key}.title`),
+        location:  locations[idx],                   
+        content:   <Notebook items={contentKeys.map(i => t(`entries.${key}.content.${i}`))} />
+        };
+    });
     return (
         <section id="experience" >
             <div className="experience-content">      
             <h1 className="experience-title">
                 <span className="gradient-text">
-                Experience
+                {t("heading")}
                 </span>
             </h1>          
-            <Timeline data={experiences} />
+            <Timeline data={data} />
             </div>
         </section>
     )

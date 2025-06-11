@@ -1,3 +1,4 @@
+//cypress/e2e/contactForm.spec.cy.js
 describe("ContactForm validation (no reCAPTCHA token)", () => {
   beforeEach(() => {
     cy.visit("/");

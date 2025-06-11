@@ -1,6 +1,8 @@
+//src/components/Tool/educationDisplay.jsx
 import React from 'react';
 import Image from 'next/image';
 import { motion, AnimatePresence } from 'motion/react';
+import { useTranslations } from 'next-intl';
 
 const EducationDisplay = ({
     imageSrc,
@@ -9,7 +11,7 @@ const EducationDisplay = ({
     open,
     onToggle 
     }) => {
-    
+    const t = useTranslations("educationDisplay");
     return (
         <div className="flex flex-col items-center w-full max-w-md bg-transparent p-6 rounded-lg shadow-lg">
         <div className="relative w-32 h-32 mb-4">
@@ -81,7 +83,7 @@ const EducationDisplay = ({
                 >
                     {open ? "–" : "+"}  
                 </span>
-                <span className="relative z-10 leading-none">Courses</span>
+                <span className="relative z-10 leading-none">{t("buttons.courses")}</span>
             </button>
             <div className="flex flex-wrap gap-2 justify-center">
                 <AnimatePresence>

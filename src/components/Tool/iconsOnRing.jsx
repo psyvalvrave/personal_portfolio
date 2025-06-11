@@ -1,3 +1,4 @@
+//src/components/Tool/iconsOnRing.jsx
 import React from 'react';
 import Image from 'next/image';
 import HoverReveal from './hoverReveal';

@@ -1,3 +1,4 @@
+//src/components/Tool/sketchModal.jsx
 import React, { useEffect, useState, useLayoutEffect, useRef } from 'react';
 import styles from '../ToolStyles/sketchModal.module.css';
 

@@ -1,13 +1,17 @@
+//src/components/Stack/index.jsx
 import React, { useLayoutEffect, useRef } from 'react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import { useSelector } from 'react-redux';
+import { useTranslations } from 'next-intl';
 import gsap from 'gsap';
 import Image from 'next/image';
-import HoverReveal from '../Tool/hoverReveal';
-import IconsOnRing from '../Tool/iconsOnRing';
+import HoverReveal from '@/components/Tool/hoverReveal';
+import IconsOnRing from '@/components/Tool/iconsOnRing';
 
 
 export default function Index() {
+    const t = useTranslations("stack");
+
     gsap.registerPlugin(ScrollTrigger);
 
     const isMobile = useSelector((state) => state.responsive.isMobile);
@@ -131,7 +135,7 @@ export default function Index() {
             <section id="stack">
                 <div className="relative h-screen mt-10 pb-20 flex flex-col items-center justify-center bg-[radial-gradient(circle_400px_at_50%_500px,#e8b3f536,#15012b)]">
                     <h1 className="md:hidden absolute top-[20%] left-1/2 transform -translate-x-1/2 text-2xl font-bold text-white">
-                        <span>Technology</span></h1>
+                        <span>{t("heading")}</span></h1>
                     <div className="fixed inset-0 z-[-1]" />
                     <div 
                         ref={centerRef}
@@ -142,7 +146,7 @@ export default function Index() {
                             <div className="relative w-24 h-24">
                                 <Image                           
                                     src={'/images/Skills.png'}
-                                    alt="skill_set icon"
+                                    alt={t("heading")}
                                     fill={true} 
                                     priority={true}
                                     className="object-cover object-center"
@@ -150,7 +154,7 @@ export default function Index() {
                                 />
                             </div>
                             }
-                            defaultContent={<span className="text-white font-bold text-xl">Technology</span>}
+                            defaultContent={<span className="text-white font-bold text-xl">{t("heading")}</span>}
                         containerClassName="relative w-24 h-24"
                         defaultContentClassName="absolute inset-0 flex items-center justify-center"
                         />

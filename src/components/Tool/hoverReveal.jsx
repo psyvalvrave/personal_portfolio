@@ -1,3 +1,4 @@
+//src/components/Tool/hoverReveal.jsx
 'use client';
 
 import React, { useRef } from "react";

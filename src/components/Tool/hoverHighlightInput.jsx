@@ -1,3 +1,4 @@
+//src/components/Tool/hoverHighlightInput.jsx
 import React, { useRef, useState } from 'react';
 
 export function HoverHighlightInput({

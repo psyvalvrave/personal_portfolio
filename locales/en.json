@@ -1,0 +1,127 @@
+{
+    "description": {
+        "heading": "ABOUT ME",
+        "phrases": {
+            "0": "A developer in full-stack applications",
+            "1": "Proficient in Python, JavaScript and Java programming languages",
+            "2": "Familiar with modern web frameworks like React and Next.js",
+            "3": "Continuously learning and solving software engineering challenges",
+            "4": "A dedicated runner outside the code world"
+        },
+        "links": {
+            "githubAriaLabel": "View GitHub profile",
+            "linkedinAriaLabel": "View LinkedIn profile"
+            }
+    },
+    "education": {
+        "heading": "Education",
+        "diplomas": {
+            "0": "Bachelor of Computer Science",
+            "1": "Master of Computer Science"
+            }
+    },
+    "experience": {
+        "heading": "Experience",
+        "entries": {
+        "0": {
+            "startDate": "February 2021",
+            "endDate":   "May 2021",
+            "title":     "Full-Stack Development Intern",
+            "content": {
+            "0": "Designed and implemented a front-end web page to streamline inventory management.",
+            "1": "Developed and integrated a MySQL database for efficient storage and retrieval of product inventory data."
+            }
+        },
+        "1": {
+            "startDate": "October 2022",
+            "endDate":   "February 2023",
+            "title":     "Software Developer Intern",
+            "content": {
+            "0": "Improved machine learning models by modifying training data and adjusting data types using PyTorch, TensorFlow, and Keras.",
+            "1": "Tested and debugged an embedded system on a Raspberry Pi integrated with R/C cars, leveraging Linux command-line utilities to validate real-time performance.",
+            "2": "Built a dynamic website with Python, Django, and REST APIs to let users remotely control a car—an exhilarating and innovative experience."
+            }
+        }
+        }
+    },
+    "footer": {
+        "buttons": {
+        "contact": "Contact Me",
+        "download": "Download Resume"
+        },
+        "social": {
+        "github": "GitHub",
+        "linkedin": "LinkedIn",
+        "email": "Email",
+        "phone": "Phone"
+        }
+    },
+    "intro": {
+        "imageAlt": "intro image",
+        "greeting": "Hi. I am Zhecheng\nA Software Engineer",
+        "highlight": "Zhecheng",
+        "button": "Click to Explore"
+    },
+    "project": {
+    "heading": "Project",
+    "entries": {
+        "0": {
+            "description": "A Python application for automating the process of downloading and installing Elvui Addon for World of Warcraft."
+        },
+        "1": {
+            "description": "A personal portfolio website built with React and Tailwind CSS, showcasing my projects and skills."
+        },
+        "2": {
+            "description": "A mobile application built with React Native for finding and managing lease agreements on both Android and iOS."
+        },
+        "3": {
+            "description": "A Java application for playing the board game Kill Dr. Lucky with a basic interface and game logic."
+        },
+        "4": {
+            "description": "A full-stack web application for managing a retro shop—demonstrating CRUD and REST APIs, built with React and PostgreSQL."
+        }
+        }
+    },
+    "stack": {
+        "heading": "Technology"
+    },
+    "contactForm": {
+        "heading": "Leave me a message",
+        "close": "Close",
+        "placeholders": {
+        "name": "Your Name",
+        "email": "Your Email",
+        "message": "Your Message"
+        },
+        "alertRobot": "Please verify you’re not a robot.",
+        "button": {
+        "send": "Send Message",
+        "sending": "Sending…",
+        "sent": "Sent!",
+        "rateLimit": "Rate Limit",
+        "error": "Try again"
+        }
+    },
+    "projectDisplay": {
+        "buttons": {
+        "learnMore": "Learn More",
+        "download": "Download"
+        }
+    },
+    "educationDisplay": {
+        "buttons": {
+        "courses": "Courses"
+        }
+    },
+    "dock": {
+        "top": "Top",
+        "description": "Description",
+        "skillSet": "Skill Set",
+        "experience": "Experience",
+        "project": "Project",
+        "education": "Education",
+        "contact": "Contact",
+        "languageSwitcher": "Language"
+    }
+    
+}

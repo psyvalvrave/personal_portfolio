@@ -1,3 +1,4 @@
+//src/components/Tool/notebook.jsx
 import React from 'react';
 
 const agedPaper = '#FBF3E4';

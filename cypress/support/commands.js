@@ -1,3 +1,4 @@
+//cypress/support/commands.js
 Cypress.Commands.add("injectRecaptchaToken", () => {
     cy.window({ log: false }).then((win) => {
         function findAndSetTokenFiber() {

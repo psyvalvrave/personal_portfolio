@@ -1,3 +1,4 @@
+//src/components/Tool/verticalDock.jsx
 'use client';
 
 import React, { useState, useRef, useEffect } from 'react';
@@ -8,6 +9,7 @@ import {
     useSpring,
     AnimatePresence,
 } from 'motion/react';
+import { useSelector } from 'react-redux';
 import { gsap } from 'gsap';
 import { ScrollToPlugin } from 'gsap/ScrollToPlugin';
 import { cn } from "@/lib/utils";
@@ -17,6 +19,9 @@ gsap.registerPlugin(ScrollToPlugin);
 export function VerticalDock({ items }) {
     const mouseY = useMotionValue(Infinity);
     const mouseX = useMotionValue(Infinity);
+    const [openKey, setOpenKey] = useState(null);
+    const isMobile = useSelector(state => state.responsive.isMobile);
+    const isHorizontal = isMobile;
     const scrollToSection = (target, offsetY = 0) => {
         gsap.to(window, {
         duration: 1.5,
@@ -38,35 +43,69 @@ export function VerticalDock({ items }) {
         "z-50"
         )}
         >
-        {items.map((item, i) => {
-            const handleClick = item.onClick || (() => scrollToSection(item.href, item.offsetY));
-            return (
-                <IconLink
-                key={i}
+        {items.map(item => (
+            <div key={item.key} className="relative">
+            <IconLink
                 title={item.title}
                 icon={item.icon}
                 mouseX={mouseX}
                 mouseY={mouseY}
-                onClick={handleClick}
-                />
-            );
-        })}
-        </nav>
-    );
+                onClick={() => {
+                if (item.subItems) {
+                    setOpenKey(openKey === item.key ? null : item.key);
+                } else if (item.href) {
+                    scrollToSection(item.href, item.offsetY);
+                } else {
+                    item.onClick?.();
+                }
+                }}
+                isHorizontal={isHorizontal}
+                disableTooltip={item.disableTooltip}
+            />
+
+            <AnimatePresence>
+                {openKey === item.key && item.subItems && (
+                <motion.div
+                    key="submenu"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    exit={{ opacity: 0 }}
+                    className={cn(
+                    isHorizontal
+                        ? 'absolute top-full left-1/2 -translate-x-1/2 mt-2 flex flex-col space-y-4'
+                        : 'absolute left-full top-1/2 -translate-y-1/2 ml-2 flex space-x-4'
+                    )}
+                >
+                    {item.subItems.map(sub => (
+                    <IconLink
+                        key={sub.key}
+                        title={sub.title}
+                        icon={sub.icon}
+                        mouseX={mouseX}
+                        mouseY={mouseY}
+                        onClick={() => {
+                        sub.onClick();
+                        setOpenKey(null);
+                        }}
+                        disableTooltip={sub.disableTooltip}
+                        isHorizontal={isHorizontal}
+                    />
+                    ))}
+                </motion.div>
+                )}
+            </AnimatePresence>
+            </div>
+        ))}
+            </nav>
+        );
     }
 
-    function IconLink({ title, href, icon, mouseY, mouseX, onClick }) {
+    function IconLink({ title, icon, mouseY, mouseX, onClick, disableTooltip }) {
         const ref = useRef(null);
         const [hovered, setHovered] = useState(false);
 
-        const [isHorizontal, setIsHorizontal] = useState(false);
-        useEffect(() => {
-            const mq = window.matchMedia('(max-width: 639px)');
-            setIsHorizontal(mq.matches);
-            const handler = e => setIsHorizontal(e.matches);
-            mq.addEventListener('change', handler);
-            return () => mq.removeEventListener('change', handler);
-            }, []);
+        const isMobile = useSelector(state => state.responsive.isMobile);
+        const isHorizontal = isMobile;
 
         const distance = useTransform(
             isHorizontal ? mouseX : mouseY,
@@ -89,51 +128,51 @@ export function VerticalDock({ items }) {
 
         return (
             <motion.button
-            ref={ref}
-            onClick={onClick}
-            onMouseEnter={() => setHovered(true)}
-            onMouseLeave={() => setHovered(false)}
-            aria-label={title}
-            style={{ width: size, height: size }}
-            className={cn(
-                'relative flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md hover:bg-white/20 transition-colors cursor-pointer',
-                'overflow-visible focus:outline-none'
-            )}
-            >
-            <motion.div
-            className="w-[60%] h-[60%] flex items-center justify-center"
-            animate={hovered ? { scale: 1.25 } : { scale: 1 }}
-            transition={{ type: 'spring', stiffness: 300, damping: 20 }}
-            >
-                {React.cloneElement(icon, { className: 'w-full h-full text-white' })}
+                ref={ref}
+                onClick={onClick}
+                onMouseEnter={() => setHovered(true)}
+                onMouseLeave={() => setHovered(false)}
+                aria-label={title}
+                style={{ width: size, height: size }}
+                className={cn(
+                    'relative flex items-center justify-center rounded-full bg-white/10 backdrop-blur-md hover:bg-white/20 transition-colors cursor-pointer',
+                    'overflow-visible focus:outline-none'
+                )}
+                >
+                <motion.div
+                className="w-[60%] h-[60%] flex items-center justify-center"
+                animate={hovered ? { scale: 1.25 } : { scale: 1 }}
+                transition={{ type: 'spring', stiffness: 300, damping: 20 }}
+                >
+                <div className="w-full h-full flex items-center justify-center text-white">
+                    {icon}
+                </div>
             </motion.div>
 
-            <AnimatePresence>
-                {hovered && (
+                {!disableTooltip && hovered && (
                     <motion.span
-                        initial={{
-                            opacity: 0,
-                            ...(isHorizontal ? { y: 4 } : { x: 4 }),
-                            }}
-                        animate={{
-                            opacity: 1,
-                            ...(isHorizontal ? { y: 0 } : { x: 0 }),
-                            }}
-                        exit={{
-                            opacity: 0,
-                            ...(isHorizontal ? { y: 4 } : { x: 4 }),
-                            }}
-                        className={cn(
-                            'absolute whitespace-nowrap bg-transparent text-white text-xs rounded',
-                            isHorizontal
-                                ? 'top-full left-1/2 -translate-x-1/2 mt-2'
-                                : 'left-full ml-2 top-1/2 -translate-y-1/2'
-                            )}
-                    >
-                        {title}
-                    </motion.span>
+               initial={{
+                 opacity: 0,
+                 ...(isMobile ? { y: 4 } : { x: 4 }),
+               }}
+               animate={{
+                 opacity: 1,
+                 ...(isMobile ? { y: 0 } : { x: 0 }),
+               }}
+               exit={{
+                 opacity: 0,
+                 ...(isMobile ? { y: 4 } : { x: 4 }),
+               }}
+               className={cn(
+                 'absolute whitespace-nowrap bg-transparent text-white text-xs rounded',
+                 isMobile
+                   ? 'top-full left-1/2 -translate-x-1/2 mt-2'
+                   : 'left-full ml-2 top-1/2 -translate-y-1/2'
+               )}
+             >
+               {title}
+             </motion.span>
                 )}
-            </AnimatePresence>
             </motion.button>
         );
     }

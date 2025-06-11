@@ -1,4 +1,6 @@
+//src/components/Tool/projectDisplay.jsx
 import React, { useState } from 'react';
+import { useTranslations } from 'next-intl';
 import Image from 'next/image';
 import ImageModal from './imageModal';
 import Glow from './glow';
@@ -6,6 +8,7 @@ import Glow from './glow';
 
 const ProjectDisplay = ({ title, imageSrc, githubUrl, keywords, description, downloadUrl}) => {
     const [isModalOpen, setModalOpen] = useState(false);
+    const t = useTranslations("projectDisplay");
 
     return (
         <div className="flex flex-col w-full max-w-full h-[60vh] gap-4 bg-[radial-gradient(circle_200px_at_50%_500px,#e8b3f536,#15012b)] p-6 rounded-lg shadow-lg">       
@@ -35,7 +38,7 @@ const ProjectDisplay = ({ title, imageSrc, githubUrl, keywords, description, dow
                         className="relative inline-block group w-max text-lg font-medium text-white"
                         >
                         <span className="relative z-10 px-1 group-hover:text-purple-950">
-                            Learn More
+                            {t("buttons.learnMore")}
                         </span>
                         <span
                             className="absolute left-0 bottom-0 w-full h-0.5 bg-red-500 z-0 
@@ -52,7 +55,7 @@ const ProjectDisplay = ({ title, imageSrc, githubUrl, keywords, description, dow
                         className="relative inline-block group w-max text-lg font-medium text-white"
                         >
                         <span className="relative z-10 px-1 group-hover:text-purple-950">
-                            Download
+                            {t("buttons.download")}
                         </span>
                         <span
                         className="absolute left-0 bottom-0 w-full h-0.5 bg-red-500 z-0 

@@ -1,0 +1,126 @@
+{
+    "description": {
+        "heading": "À PROPOS DE MOI",
+        "phrases": {
+        "0": "Développeur d'applications full-stack",
+        "1": "Maîtrise des langages Python, JavaScript et Java",
+        "2": "À l'aise avec des frameworks web modernes tels que React et Next.js",
+        "3": "Apprend continuellement et relève des défis en génie logiciel",
+        "4": "Coureur passionné en dehors du monde du code"
+        },
+        "links": {
+        "githubAriaLabel": "Voir le profil GitHub",
+        "linkedinAriaLabel": "Voir le profil LinkedIn"
+        }
+    },
+    "education": {
+        "heading": "Formation",
+        "diplomas": {
+        "0": "Licence en informatique",
+        "1": "Master en informatique"
+        }
+    },
+    "experience": {
+        "heading": "Expérience",
+        "entries": {
+        "0": {
+            "startDate": "Février 2021",
+            "endDate": "Mai 2021",
+            "title": "Stagiaire en développement full-stack",
+            "content": {
+            "0": "Conception et mise en œuvre d'une page web front-end pour simplifier la gestion des stocks.",
+            "1": "Développement et intégration d'une base de données MySQL pour le stockage et l'accès efficaces aux données d'inventaire produits."
+            }
+        },
+        "1": {
+            "startDate": "Octobre 2022",
+            "endDate": "Février 2023",
+            "title": "Stagiaire développeur logiciel",
+            "content": {
+            "0": "Amélioration des modèles d'apprentissage automatique en modifiant les données d'entraînement et en ajustant les types de données avec PyTorch, TensorFlow et Keras.",
+            "1": "Test et débogage d'un système embarqué sur Raspberry Pi intégré à des voitures télécommandées, en utilisant des utilitaires en ligne de commande Linux pour valider les performances en temps réel.",
+            "2": "Création d'un site web dynamique avec Python, Django et des API REST permettant aux utilisateurs de contrôler une voiture à distance — une expérience passionnante et innovante."
+            }
+        }
+        }
+    },
+    "footer": {
+        "buttons": {
+        "contact": "Contactez-moi",
+        "download": "Télécharger le CV"
+        },
+        "social": {
+        "github": "GitHub",
+        "linkedin": "LinkedIn",
+        "email": "Courriel",
+        "phone": "Téléphone"
+        }
+    },
+    "intro": {
+        "imageAlt": "image d'introduction",
+        "greeting": "Bonjour. Je suis Zhecheng\nIngénieur logiciel",
+        "highlight": "Zhecheng",
+        "button": "Cliquez pour explorer"
+    },
+    "project": {
+        "heading": "Projet",
+        "entries": {
+        "0": {
+            "description": "Une application Python pour automatiser le téléchargement et l'installation de l’addon ElvUI pour World of Warcraft."
+        },
+        "1": {
+            "description": "Un site portfolio personnel construit avec React et Tailwind CSS, présentant mes projets et compétences."
+        },
+        "2": {
+            "description": "Une application mobile développée avec React Native pour trouver et gérer des contrats de location sur Android et iOS."
+        },
+        "3": {
+            "description": "Une application Java pour jouer au jeu de société Kill Dr. Lucky avec une interface et une logique de jeu basiques."
+        },
+        "4": {
+            "description": "Une application web full-stack pour gérer une boutique rétro — démontrant CRUD et API REST, construite avec React et PostgreSQL."
+        }
+        }
+    },
+    "stack": {
+        "heading": "Technologie"
+    },
+    "contactForm": {
+        "heading": "Laissez-moi un message",
+        "close": "Fermer",
+        "placeholders": {
+        "name": "Votre nom",
+        "email": "Votre e-mail",
+        "message": "Votre message"
+        },
+        "alertRobot": "Veuillez vérifier que vous n'êtes pas un robot.",
+        "button": {
+        "send": "Envoyer le message",
+        "sending": "Envoi en cours…",
+        "sent": "Envoyé !",
+        "rateLimit": "Trop de requêtes",
+        "error": "Réessayez"
+        }
+    },
+    "projectDisplay": {
+        "buttons": {
+        "learnMore": "En savoir plus",
+        "download": "Télécharger"
+        }
+    },
+    "educationDisplay": {
+        "buttons": {
+        "courses": "Cours"
+        }
+    },
+    "dock": {
+        "top": "Haut",
+        "description": "Description",
+        "skillSet": "Compétences",
+        "experience": "Expérience",
+        "project": "Projet",
+        "education": "Formation",
+        "contact": "Contact",
+        "languageSwitcher": "Langue"
+    }
+}

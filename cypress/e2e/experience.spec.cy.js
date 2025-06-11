@@ -1,3 +1,4 @@
+//cypress/e2e/experience.spec.cy.js
 describe("Experience Section Responsive Behavior", () => {
   const waitForScroll = () => {
     cy.wait(500);

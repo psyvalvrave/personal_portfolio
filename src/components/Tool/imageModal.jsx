@@ -1,3 +1,4 @@
+//src/components/Tool/imageModal.jsx
 import React from "react";
 import ReactDOM from "react-dom";
 import Image from "next/image";

@@ -1,12 +1,16 @@
+//src/components/Description/index.jsx
 import React, { useLayoutEffect, useRef } from 'react'
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import gsap from 'gsap';
 import { FaGithub, FaLinkedin } from 'react-icons/fa';
+import { useTranslations, useMessages } from "next-intl";
 
-
-const phrases = ["A developer in full-stack applications", "Proficient in Python, JavaScript and Java programming languages", "Familiar with modern web frameworks like React and Next.js", "Continuously learning and solving software engineering challenges", "A dedicated runner outside the code world"]
 
 export default function Index() {
+    const t = useTranslations("description");
+    const messages = useMessages();
+    const phraseObj = messages.description.phrases;
+    const keys = Object.keys(phraseObj);
     return (
         <section id="description">
             <div className="relative mt-10 mb-20">
@@ -22,11 +26,11 @@ export default function Index() {
                         mt-[30vw]
                         ml-[5vw]">
                             <h1 className="mb-4 text-xl sm:text-2xl md:sm:text-3xl font-extrabold text-gray-900 md:text-5xl lg:text-6xl">
-                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-700 to-violet-400">ABOUT ME</span>
+                                <span className="text-transparent bg-clip-text bg-gradient-to-r from-red-700 to-violet-400">{t("heading")}</span>
                             </h1>
-                            {phrases.map((phrase, index) => (
-                            <div key={index} className="mb-6 last:mb-0">
-                            <AnimatedText>&#8226; {phrase}</AnimatedText>
+                            {keys.map((key) => (
+                            <div key={key} className="mb-6 last:mb-0">
+                            <AnimatedText>&#8226; {t(`phrases.${key}`)}</AnimatedText>
                             </div>
                         ))}
                     <AnimatedIcons />
@@ -39,7 +43,6 @@ export default function Index() {
 
 function AnimatedText({ children }) {
     const text = useRef(null);
-
     useLayoutEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
         gsap.from(text.current, {
@@ -60,6 +63,7 @@ function AnimatedText({ children }) {
 }
 
 function AnimatedIcons() {
+    const t = useTranslations("description");
     const iconsRef = useRef(null);
     useLayoutEffect(() => {
         gsap.registerPlugin(ScrollTrigger);
@@ -82,7 +86,7 @@ function AnimatedIcons() {
                 href="https://github.com/psyvalvrave" 
                 target="_blank" 
                 rel="noopener noreferrer"
-                aria-label="View GitHub profile"
+                aria-label={t("links.githubAriaLabel")}
             >
             <FaGithub className="text-white text-3xl md:text-6xl transition-transform duration-300 transform hover:scale-[1.5]" />
         </a>
@@ -90,7 +94,7 @@ function AnimatedIcons() {
             href="https://www.linkedin.com/in/zhecheng-li-0923b4190/" 
             target="_blank" 
             rel="noopener noreferrer"
-            aria-label="View LinkedIn profile"
+            aria-label={t("links.linkedinAriaLabel")}
         >
             <FaLinkedin className="text-white text-3xl md:text-6xl transition-transform duration-300 transform hover:scale-[1.5]" />
         </a>

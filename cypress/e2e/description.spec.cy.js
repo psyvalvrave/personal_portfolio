@@ -1,3 +1,4 @@
+//cypress/e2e/description.spec.cy.js
 describe("Description Section Social Links", () => {
   beforeEach(() => {
     cy.visit("/");

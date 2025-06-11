@@ -1,10 +1,14 @@
+//src/components/Tool/contactForm.jsx
 import React, { useState, useRef, useEffect } from 'react';
+import { useTranslations } from 'next-intl';
 import ReCAPTCHA from 'react-google-recaptcha';
 import { HoverGradientButton } from './hoverGradientButton';
 import { HoverHighlightInput } from './hoverHighlightInput';
 
 
 export default function ContactForm({ onClose }) {
+    const t = useTranslations("contactForm");
+
     const [form, setForm] = useState({ name: '', email: '', message: '' });
     const [status, setStatus] = useState('idle'); 
     const [recaptchaToken, setRecaptchaToken] = useState(null);
@@ -31,7 +35,7 @@ export default function ContactForm({ onClose }) {
         e.preventDefault();
 
         if (!recaptchaToken) {
-            alert('Please verify you’re not a robot.');
+            alert(t("alertRobot"));
             return;
         }
 
@@ -63,23 +67,32 @@ export default function ContactForm({ onClose }) {
         }
     };
 
+    const buttonLabel = {
+        idle:     t("button.send"),
+        sending:  t("button.sending"),
+        success:  t("button.sent"),
+        "rate-limit": t("button.rateLimit"),
+        error:    t("button.error"),
+    }[status] || t("button.send");
+
     return (
         <div className="relative max-w-md mx-auto">
         <div className="bg-black text-white border-none shadow-lg p-6">
             
             <button
             onClick={onClose}
+            aria-label={t("close")}
             className="absolute top-2 right-2 text-white cursor-pointer hover:text-gray-300"
             >
             ✕
             </button>
             
-            <h2 className="text-2xl font-semibold mb-4">Leave me a message</h2>
+            <h2 className="text-2xl font-semibold mb-4">{t("heading")}</h2>
             <form onSubmit={handleSubmit} className="space-y-4">
                 <HoverHighlightInput
                     as="input"
                     name="name"
-                    placeholder="Your Name"
+                    placeholder={t("placeholders.name")}
                     required
                     value={form.name}
                     onChange={handleChange}
@@ -88,7 +101,7 @@ export default function ContactForm({ onClose }) {
                     as="input"
                     type="email"
                     name="email"
-                    placeholder="Your Email"
+                    placeholder={t("placeholders.email")}
                     required
                     value={form.email}
                     onChange={handleChange}
@@ -97,7 +110,7 @@ export default function ContactForm({ onClose }) {
                     as="textarea"
                     name="message"
                     rows={4}
-                    placeholder="Your Message"
+                    placeholder={t("placeholders.message")}
                     required
                     value={form.message}
                     onChange={handleChange}
@@ -119,15 +132,7 @@ export default function ContactForm({ onClose }) {
                             ${status === 'sending' ? 'opacity-50 pointer-events-none' : ''}
                         `}
                         >
-                        {status === 'sending'
-                            ? 'Sending…'
-                            : status === 'success'
-                            ? 'Sent!'
-                            : status === 'rate-limit'
-                            ? 'Rate Limit'
-                            : status === 'error'
-                            ? 'Try again'
-                            : 'Send Message'}
+                        {buttonLabel}
                         </HoverGradientButton>
                     </div>
             </form>

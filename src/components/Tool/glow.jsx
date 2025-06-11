@@ -1,3 +1,4 @@
+//src/components/Tool/glow.jsx
 import { motion } from "motion/react";
 
 export default function Glow({ className = "" }) {

@@ -1,9 +1,11 @@
+//src/components/Project/index.jsx
 import React, { useState, useLayoutEffect, useRef } from 'react'
 import { useSelector } from 'react-redux';
+import { useTranslations } from 'next-intl';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import ProjectDisplay from '../Tool/projectDisplay';
-import CustomDropdown from '../Tool/customDropdown';
+import ProjectDisplay from '@/components/Tool/projectDisplay';
+import CustomDropdown from '@/components/Tool/customDropdown';
 import './project.css'
 
 const projects = [
@@ -12,7 +14,6 @@ const projects = [
         imageSrc: "/images/projects/Elvui_Freebie.png",
         githubUrl: "https://github.com/psyvalvrave/Elvui_Freebie",
         keywords: ["Python", "Selenium", "PyQT5", "Nuitka"],
-        description: "A Python application for automating the process of downloading and installing Elvui Addon for World of Warcraft.",
         downloadUrl: "https://github.com/psyvalvrave/Elvui_Freebie/actions/runs/14139417214/artifacts/2870783451",
     },
     {
@@ -20,26 +21,22 @@ const projects = [
         imageSrc: "/images/projects/Personal_Portfolio.png",
         githubUrl: "https://github.com/psyvalvrave/personal_portfolio",
         keywords: ["JavaScript", "React", "Tailwind CSS", "HTML"],
-        description: "A personal portfolio website built with React and Tailwind CSS, showcasing my projects and skills.",
     },
     {
         title: "Find My Lease", 
         imageSrc: "/images/projects/FindMyLease.jpg",
         githubUrl: "https://github.com/psyvalvrave/FindMyLease",
         keywords: ["React-Native", "JavaScript", "Expo Go", "Firebase", "NoSql"],
-        description: "A mobile application build with React-Native application for finding and managing lease agreements on both Android and IOS system.",
     },
     {
         title: "Kill Dr.Lucky Game",
         imageSrc: "/images/projects/KillDrLucky.png",
         githubUrl: "https://github.com/psyvalvrave/KillDrLuckyJavaProject",
         keywords: ["Java", "Java Swing", "Junit", "MVC Design Pattern"],
-        description: "A Java application for playing a board game of Kill Dr. Lucky with basic interface and game logic.",
     },
     {
         title: "Retro Web Shop",
         imageSrc: "/images/projects/Retro_Web_Shop_Demo.png",
-        description: "A full-stack web application for managing a retro shop to demonstrate CRUD and Rest API, built with React and PostgreSQL.",
         githubUrl: "https://github.com/psyvalvrave/Retro_Web_Shop_React_Demo",
         keywords: ["JavaScript", "React", "PostgreSQL", "Prisma", "Rest API"],
     },
@@ -47,7 +44,7 @@ const projects = [
 ];
 
 export default function Index() {
-
+    const t = useTranslations("project");
     const [selectedProject, setSelectedProject] = useState(0);
     const pinnedContainerRef = useRef(null);
 
@@ -82,7 +79,7 @@ export default function Index() {
                 <div className="projects-row">
                     <div className="projects-left" ref={pinnedContainerRef}>                   
                     <h1 className="projects-title">
-                        <span className="gradient-text">Project</span>
+                        <span className="gradient-text">{t("heading")}</span>
                     </h1>
                     <CustomDropdown
                         className="block md:hidden"
@@ -96,7 +93,7 @@ export default function Index() {
                         githubUrl={projects[selectedProject].githubUrl}
                         keywords={projects[selectedProject].keywords}
                         downloadUrl={projects[selectedProject].downloadUrl}
-                        description={projects[selectedProject].description}
+                        description={t(`entries.${selectedProject}.description`)}
                     />
                     
                     </div>

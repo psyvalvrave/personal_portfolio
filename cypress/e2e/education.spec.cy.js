@@ -1,3 +1,4 @@
+//cypress/e2e/education.spec.cy.js
 describe('Education Section – Pin & Visibility', () => {
   beforeEach(() => {
     cy.viewport(1920, 1080);
