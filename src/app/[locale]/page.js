@@ -67,7 +67,7 @@ function HomeContent() {
       { key:  "skillSet", title: t("skillSet"), icon: <IconCode />, href: "#stack", offsetY: isMobile ? 80 : 150 },
       { key:  "experience", title: t("experience"), icon: <IconBriefcase />, href: "#experience", offsetY: isMobile ? 0 : -100 },
       { key:  "project", title: t("project"), icon: <IconFileText />, href: "#projects", offsetY: isMobile ? 70 : 0 },
-      { key:  "education", title: t("education"), icon: <IconSchool />, href: "#education", offsetY: isMobile ? 70 : -100 },
+      { key:  "education", title: t("education"), icon: <IconSchool />, href: "#education", offsetY: isMobile ? 70 : -150 },
       { key:  "contact", title: t("contact"), icon: <IconContract />, onClick: () => setContactOpen(true) },
     ];
     const langItem = {
@@ -86,7 +86,11 @@ function HomeContent() {
       }))
     };
 
-    return [...standard, langItem];
+    return [
+        ...standard.slice(0, -1),  
+        langItem,                 
+        standard[standard.length - 1] 
+      ];
   }, [locale, tDock, router]);
 
   useEffect(() => {

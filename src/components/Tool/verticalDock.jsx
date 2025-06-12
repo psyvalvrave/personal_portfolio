@@ -141,7 +141,11 @@ export function VerticalDock({ items }) {
                 >
                 <motion.div
                 className="w-[60%] h-[60%] flex items-center justify-center"
-                animate={hovered ? { scale: 1.25 } : { scale: 1 }}
+                animate={
+                    hovered
+                    ? { scale: isMobile ? 1.05 : 1.25 }
+                    : { scale: 1 }
+                }
                 transition={{ type: 'spring', stiffness: 300, damping: 20 }}
                 >
                 <div className="w-full h-full flex items-center justify-center text-white">
@@ -151,27 +155,27 @@ export function VerticalDock({ items }) {
 
                 {!disableTooltip && hovered && (
                     <motion.span
-               initial={{
-                 opacity: 0,
-                 ...(isMobile ? { y: 4 } : { x: 4 }),
-               }}
-               animate={{
-                 opacity: 1,
-                 ...(isMobile ? { y: 0 } : { x: 0 }),
-               }}
-               exit={{
-                 opacity: 0,
-                 ...(isMobile ? { y: 4 } : { x: 4 }),
-               }}
-               className={cn(
-                 'absolute whitespace-nowrap bg-transparent text-white text-xs rounded',
-                 isMobile
-                   ? 'top-full left-1/2 -translate-x-1/2 mt-2'
-                   : 'left-full ml-2 top-1/2 -translate-y-1/2'
-               )}
-             >
-               {title}
-             </motion.span>
+                    initial={{
+                        opacity: 0,
+                        ...(isMobile ? { y: 4 } : { x: 4 }),
+                    }}
+                    animate={{
+                        opacity: 1,
+                        ...(isMobile ? { y: 0 } : { x: 0 }),
+                    }}
+                    exit={{
+                        opacity: 0,
+                        ...(isMobile ? { y: 4 } : { x: 4 }),
+                    }}
+                    className={cn(
+                        'absolute whitespace-nowrap bg-transparent text-white text-xs rounded',
+                        isMobile
+                        ? 'top-full left-1/2 -translate-x-1/2 mt-2'
+                        : 'left-full ml-2 top-1/2 -translate-y-1/2'
+                    )}
+                    >
+                    {title}
+                    </motion.span>
                 )}
             </motion.button>
         );
