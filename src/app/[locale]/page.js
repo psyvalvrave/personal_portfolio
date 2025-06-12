@@ -66,8 +66,8 @@ function HomeContent() {
       { key: "description", title: t("description"), icon: <IconInfoCircle />, href: "#description", offsetY: isMobile ? -20 : -190 },
       { key:  "skillSet", title: t("skillSet"), icon: <IconCode />, href: "#stack", offsetY: isMobile ? 80 : 150 },
       { key:  "experience", title: t("experience"), icon: <IconBriefcase />, href: "#experience", offsetY: isMobile ? 0 : -100 },
-      { key:  "project", title: t("project"), icon: <IconFileText />, href: "#projects", offsetY: isMobile ? 70 : 0 },
-      { key:  "education", title: t("education"), icon: <IconSchool />, href: "#education", offsetY: isMobile ? 70 : -150 },
+      { key:  "project", title: t("project"), icon: <IconFileText />, href: "#projects", offsetY: isMobile ? 70 : 40 },
+      { key:  "education", title: t("education"), icon: <IconSchool />, href: "#education", offsetY: isMobile ? 70 : 40 },
       { key:  "contact", title: t("contact"), icon: <IconContract />, onClick: () => setContactOpen(true) },
     ];
     const langItem = {
