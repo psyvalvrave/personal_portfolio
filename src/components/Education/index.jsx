@@ -11,6 +11,9 @@ import './education.css';
 const educations = [
     {
     school: "Suffolk University",
+    schoolName: "Suffolk University",
+    url: "https://www.suffolk.edu/",
+    location: "Boston, MA, the United States",
     imageSrc: "/images/educations/Suffolk_University.png",
     courses: [
         "Introduction to Computer Science",
@@ -25,6 +28,9 @@ const educations = [
     },
     {
     school: "Northeastern University",
+    schoolName: "Northeastern University Vancouver",
+    url: "https://vancouver.northeastern.edu/",
+    location: "Vancouver, BC, Canada",
     imageSrc: "/images/educations/Northeastern_University.png",
     courses: [
         "Programming Design Paradigm",
@@ -118,6 +124,9 @@ const educations = [
                     className="gradient-bar"
                     />
                 <EducationDisplay
+                    schoolName={educations[selectedEducation].schoolName}
+                    schoolUrl={educations[selectedEducation].url} 
+                    schoolLocation={educations[selectedEducation].location}
                     imageSrc={educations[selectedEducation].imageSrc}
                     diploma={t(`diplomas.${selectedEducation}`)}
                     courses={educations[selectedEducation].courses}
